@@ -5,11 +5,11 @@ Segundo Parcial -  Métodos Numéricos 2023
 plapla
 ## Lista de Tareas
 ### PARTE I
-+Implementar el metodo del trapecio integracion numerica equidistante
-+Probar el metodo del punto anterior
-+Implementar el metodo del trapecio no equidistante
-+Probar el metodo con una integral analitica
-+Manejo de Archivos, leer un archivos y detectar el numero de filas del archivo
++ Implementar el metodo del trapecio integracion numerica equidistante
++ Probar el metodo del punto anterior
++ Implementar el metodo del trapecio no equidistante
++ Probar el metodo con una integral analitica
++ Manejo de Archivos, leer un archivos y detectar el numero de filas del archivo
 
 ### PARTE II
 + LatEx
