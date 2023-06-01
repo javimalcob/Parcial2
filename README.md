@@ -20,3 +20,5 @@ plapla
 + leer de la funcion Fit de GnuPlot 
 
 + Implementar el metodo de Simpson compuesto
+### Adicionales
++ Arrays , Matrices , ALLOCATABLE
