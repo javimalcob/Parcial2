@@ -20,14 +20,16 @@ implicit none
 	cant_datos = 0
 	
 	!Abrimos el .dat
-	open(newunit=fu, file=archivo, status='old', action ='read')
+	open(newunit=fu, file=archivo, status='old', action ='read',iostat=coso)
 			
-		du: do
-			read (fu, iostat=coso) line
-			if (coso == iostat_end) exit du
-			
+		du: do i = 1, 17
+			read (fu,*, iostat=coso) line
+			if (coso == iostat_end) then
+                write(*,*) "caca final"
+                exit du
+            end if
 			cant_datos = cant_datos + 1
-		write(*,*) "a"
+	    	write(*,*) "a"  
 		end do du
 
 	close (fu)
