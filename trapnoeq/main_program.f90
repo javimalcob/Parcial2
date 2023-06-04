@@ -20,9 +20,10 @@ implicit none
 	cant_datos = 0
 	
 	!Abrimos el .dat
+    !#### FUNCIONA DESDE ACAAAAAA :D ################################## 
 	open(newunit=fu, file=archivo, status='old', action ='read',iostat=coso)
 			
-		du: do i = 1, 17
+		du: do
 			read (fu,*, iostat=coso) line
 			if (coso == iostat_end) then
                 write(*,*) "caca final"
@@ -41,15 +42,15 @@ implicit none
 	open(newunit=fu, file=archivo, status='old', action = 'read')
 		
 		do i = 1, cant_datos
-			read(fu,*) col1, col2
-            write(*,*) col1, col2
-			read(col1,*) x(i)
-            read(col2,*) y(i)
+			read(fu,*) col1, col2  !por cada variable que de lee un columna del archivo
+            write(*,*) col1, col2 !podria cambiar directo x(i), y(i)
+			read(col1,*) x(i)  !releer el valor de la variable col1 y la coloca en el vector
+            read(col2,*) y(i)  !sospecho que estas 2 ult lineas de codigo son como asignaciones 
 		end do 
 	close (fu)
 	
 	print *, 'lo bectoreh, X', x, "Y",y
-	
+	!################FUNCIONAAAAAA HASTA ACA :D ####################
 	deallocate (x, y)
 	
 !-----------------------------------	
