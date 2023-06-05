@@ -1,0 +1,17 @@
+HOLA
+
+no sabía como agregar una descripción al commit "javi perdon esto es un asco no entiendo un choto" así que acá va este txt.
+
+antes que nada, perdón el desastre.
+
+en todos los archivos de terminación "nofunca.f90" están el código como creo que debería ser pero POR ALGUN MOTIVO NO COMPILA. me sale el error Invalid Procedure Argument en la fila 70 del main (donde llamamos a la subrutina). 
+
+en los mismos archivos pero no terminados en "nofunca.f90" está mal el metodo (esta como equiespaciado) pero con todas las variables necesarias para el no equiesp. pero SI COMPILA. (???????????????????)
+
+espero se tranmita en esos signos de pregunta mi indignación (?)
+
+en fin, eso. 
+
+acordate que siempre se puede volver a los commits anteriores. porque alto quilombo hice, pero we
+
+feliz navidad.
