@@ -1,7 +1,7 @@
 program main_test
 use mod_prec
 use mod_funciones
-use mod_integracion
+use mod_integracion_nofunca
 
 !hay que abrir un archivo de datos, leer las filas, guardarlas en un 
 !vector dos pro dos y darselo de comera ala subrutina.
@@ -67,7 +67,7 @@ implicit none
 	read(*,*) n
 	
   !Bloque de procesamiento	
-	call trapecio (a, b, f1, n, int, x, y, cant_datos)
+	call trapecionofunca (a, b, f1, n, int, x, y, cant_datos)
 	
   !Salida de datos
 	write(*,*) "El valor de la integral de integral es:", int
