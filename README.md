@@ -44,7 +44,8 @@ Archivo .dat
 15.0	-358.733
 16.0	-394.825
 
-#notas
+# notas ecucaciones diferenciales 
+
 + Problema de encontrar el parametro inicial de una ecuacion diferencial
 + Metodo de Euler
 + dy/dt = f(t,y)
