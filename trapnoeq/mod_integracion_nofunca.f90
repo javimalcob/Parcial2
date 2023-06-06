@@ -9,7 +9,7 @@ implicit none
 
 contains
 		!(a, b, f1, n, int, x, y, cant_datos)
-	subroutine trapecionofunca (a, b, f, n, int, x, y, dim)
+	subroutine trapecio (a, b, f, n, int, x, y, dim)
 		
 		use mod_prec
 		use mod_funciones
@@ -20,15 +20,13 @@ contains
 		real(wp)				:: f
 		real(wp), intent(out)			:: int
 		integer(il), intent(in)			:: n, dim
-		real(wp), allocatable, dimension(:)	:: x, y 
+		real(wp), dimension(dim), intent (in)	:: x, y 
 	!Declaracion de variables aux
 		real(wp) 				:: aux, h, xi
 		integer(il)				:: i
 		
 	!Incializacion de variables
-		
-		allocate (x(dim), y(dim))
-		
+				
 		!int = y(0) + y(1) / 2.0_wp
 		int = 0._wp
 		
@@ -49,8 +47,7 @@ contains
 		
 		!int = int * h	eb este caso tenemos distintos h por c/intervalo
 		
-		deallocate (x, y)
 		
-	end subroutine trapecionofunca
+	end subroutine trapecio
 	
 end module mod_integracion_nofunca

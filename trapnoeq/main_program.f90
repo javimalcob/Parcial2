@@ -9,10 +9,10 @@ use mod_integracion
 implicit none
 		
 	!Declaracion de variables
-	real(wp)								:: a, b, int
-	real(wp), allocatable, dimension(:)		:: x, y
-	integer(il)								:: i, n, cant_datos, fu, coso
-	character(20)							:: archivo, line, col1, col2
+	real(wp)				:: a, b, int
+	real(wp), allocatable, dimension(:)	:: x, y
+	integer(il)				:: i, n, cant_datos, fu, coso
+	character(20)				:: archivo, line, col1, col2
 	
 	!Inicializacion de variables
 	
@@ -48,9 +48,9 @@ implicit none
 		do i = 1, cant_datos
 		
 			read(fu,*) col1, col2  	!por c/variable que de lee un columna del archivo
-            write(*,*) col1, col2 	!podria cambiar directo x(i), y(i)
+        	    	write(*,*) col1, col2 	!podria cambiar directo x(i), y(i)
 			read(col1,*) x(i)  		!relee el valor de la variable col1 y la coloca en el vector
-           	read(col2,*) y(i)	  	!sospecho que estas 2 ult lineas de codigo son como asignaciones 
+        	   	read(col2,*) y(i)	  	!sospecho que estas 2 ult lineas de codigo son como asignaciones 
 		
 		end do 
 	
@@ -59,8 +59,7 @@ implicit none
 	write(*,*) "Los vectores 	    x		   e   	 	    y"
 	write(*,'(8X, F22.14, 8X, F22.14)') x, y
 	
-	deallocate (x, y)
-
+	
 !################FUNCIONAAAAAA HASTA ACA :D ####################
 	
 	write(*,*) "DAME ENEEEE" 
@@ -69,6 +68,7 @@ implicit none
   !Bloque de procesamiento	
 	call trapecio (a, b, f1, n, int, x, y, cant_datos)
 	
+	deallocate (x,y)
   !Salida de datos
 	write(*,*) "El valor de la integral de integral es:", int
 

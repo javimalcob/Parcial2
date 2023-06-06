@@ -20,24 +20,28 @@ contains
 		real(wp)			:: f
 		real(wp), intent(out)		:: int
 		integer(il), intent(in)		:: n, dim
-		real(wp), allocatable, dimension(:) :: x, y 
+		real(wp), dimension(dim), intent(in) :: x, y 
 	!Declaracion de variables aux
 		real(wp)  		       :: aux, h, xi
 		integer(il)			:: i
 		
 	!Incializacion de variables
 		
-		allocate (x(dim), y(dim))
+		int = 0
 		
-		h = (b - a)/ n
-		int = (f(a) + f(b)) / 2.0_wp
+		write(*,*) "···································"
+		write(*,'(8X, F22.14, 8X, F22.14)') x, y
+		write(*,*) "···································"
 		
-		!Bloque de procesamiento
+	!Bloque de procesamiento
+	
 		do i = 1 , dim-1
 			
-			xi = a + i*h
-			int = int + f(xi)
-					
+			h = x(i+1)-x(1)
+			aux = (f(x(i)) + f(x(i+1)))*2._wp
+			
+			int = int + aux*h	
+		
 		end do 
 		
 		print *, '~~~~~~~~~~~~~~~~~~~~~~~~~~~'
@@ -46,10 +50,7 @@ contains
 		
 		!int = int * h	eb este caso tenemos distintos h por c/intervalo
 		
-		deallocate (x, y)
-		
 	end subroutine trapecio
 	
-		
 
 end module mod_integracion
