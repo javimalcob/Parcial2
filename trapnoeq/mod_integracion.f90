@@ -9,7 +9,7 @@ implicit none
 
 contains
 		 !(a, b, f1, n, int, x, y, cant_datos)
-	subroutine trapecio (a, b, f, n, int, x, y, dim)
+	subroutine trapecio (a, b, f, n, int, x, dim)
 		
 		use mod_prec
 		use mod_funciones
@@ -20,7 +20,7 @@ contains
 		real(wp)			:: f
 		real(wp), intent(out)		:: int
 		integer(il), intent(in)		:: n, dim
-		real(wp), dimension(dim), intent(in) :: x, y 
+		real(wp), dimension(dim), intent(in) :: x
 	!Declaracion de variables aux
 		real(wp)  		       :: aux, h, xi
 		integer(il)			:: i
@@ -30,7 +30,7 @@ contains
 		int = 0
 		
 		write(*,*) "···································"
-		write(*,'(8X, F22.14, 8X, F22.14)') x, y
+		write(*,'(8X, F22.14, 8X, F22.14)') x
 		write(*,*) "···································"
 		
 	!Bloque de procesamiento
