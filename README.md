@@ -51,7 +51,7 @@ Archivo .dat
   a < t < b
   h = (b-a)/ n
  y(t0) = alfa
- ´´´fortran
+ ```fortran
   t = a
   w = alfa
   !write(I2, 100) t, w
@@ -62,4 +62,4 @@ Archivo .dat
     write ('I2', 100) t, w
     i = i + 1
   end do
- ´´´
+ ```
