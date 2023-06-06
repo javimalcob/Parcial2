@@ -67,7 +67,7 @@ implicit none
 	read(*,*) n
 	
   !Bloque de procesamiento	
-	call trapecio (a, b, f1, n, int, x, y, cant_datos)
+	call trapecio (a, b, f1, n, int, x, cant_datos)
 	
 	deallocate (x,y)
   !Salida de datos
