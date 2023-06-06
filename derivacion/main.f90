@@ -20,7 +20,10 @@ implicit none
 	call derivada5centrada (c, h, f3, dfc)	 	
 	 	print *,'derivada xinxo puntos:', dfc
 	 	
-	call derivada2puntos (c, h, f3, dfc)	 	
-	 	print *,'derivada dos puntos:', dfc
+	call derivada2adelante (c, h, f3, dfc)	 	
+	 	print *,'derivada dos puntos padelante:', dfc
 
+	call derivada2atras (c, h, f3, dfc)	 	
+	 	print *,'derivada dos puntos patras:', dfc
+	 	
 end program problema2

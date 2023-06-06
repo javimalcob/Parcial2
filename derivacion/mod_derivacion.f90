@@ -38,10 +38,10 @@ contains
 	    
 	end subroutine derivada5centrada
 
-!2 PUNTOS
+!2 PUNTOS para adelante
 !-------------------------------------------------------------------------------------
 
-	subroutine derivada2puntos (c, h, f, dfc)
+	subroutine derivada2adelante (c, h, f, dfc)
 	!Declaracion de Dummy variables
         real(wp), intent(in)    :: c
         real(wp), intent(in)    :: h
@@ -50,6 +50,20 @@ contains
 	    
 	    dfc = (f(c+h)-f(c))/h
 	    
-	end subroutine derivada2puntos
+	end subroutine derivada2adelante
+
+!2 PUNTOS para atras
+!-------------------------------------------------------------------------------------
+
+	subroutine derivada2atras (c, h, f, dfc)
+	!Declaracion de Dummy variables
+        real(wp), intent(in)    :: c
+        real(wp), intent(in)    :: h
+        real(wp)            	:: f
+        real(wp), intent(out)   :: dfc 	
+	    
+	    dfc = (f(c-h)-f(c))/h
+	    
+	end subroutine derivada2atras
 
 end module derivadas
