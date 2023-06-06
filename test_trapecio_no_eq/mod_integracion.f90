@@ -16,32 +16,32 @@ contains
 		implicit none
 	
 	!Declaracion de variables
-		real(wp), dimension(n), intent(in)    :: x
-		real(wp)			:: f
-		real(wp), intent(out)		:: int
-		integer(il), intent(in)		:: n
+		real(wp), dimension(0:n), intent(in)    :: x
+		real(wp)			                  :: f
+		real(wp), intent(out)		          :: int
+		integer(il), intent(in)		          :: n
 		 
 	!Declaracion de variables aux
-		real(wp)  		       :: aux, h, xi
-		integer(il)			:: i
+		real(wp)  		        :: aux, h, xi
+		integer(il)			    :: i
 		
 	!Incializacion de variables
 		
-		int = 0.0_wp
-		
-	
-	
-	
+		int = 0.0_wp	
 		
 	!Bloque de procesamiento
 	
-		do i = 1 , n-1
+		do i = 0 , n-1
 			
-			h = x(i+1)-x(1)
-			aux = (f(x(i)) + f(x(i+1)))*2._wp
+			!h = x(i+1)-x(i)
+			!aux = f(x(i))
+			!aux = (f(x(i)) + f(x(i+1)))*2._wp
 			
-			int = int + aux*h	
-		
+			
+			h = x(i+1)-x(i)
+			aux = (f(x(i)) + f(x(i+1)))/2
+			int = int + aux * h
+		    write(*,*) int
 		end do 
 		
 		print *, '~~~~~~~~~~~~~~~~~~~~~~~~~~~'
