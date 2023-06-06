@@ -47,17 +47,18 @@ implicit none
 		
 		do i = 1, cant_datos
 		
-			read(fu,*) col1, col2  	!por c/variable que de lee un columna del archivo
-        	    	write(*,*) col1, col2 	!podria cambiar directo x(i), y(i)
-			read(col1,*) x(i)  		!relee el valor de la variable col1 y la coloca en el vector
-        	   	read(col2,*) y(i)	  	!sospecho que estas 2 ult lineas de codigo son como asignaciones 
+			read(fu,*) x(i), y(i)
+            write(*,*) "LOQUE TIENE, x , y iteracion #",i, x(i), y(i)
+
+
+ 
 		
 		end do 
 	
 	close (fu)
 	
 	write(*,*) "Los vectores 	    x		   e   	 	    y"
-	write(*,'(8X, F22.14, 8X, F22.14)') x, y
+	write(*,'(8X, F22.14, 8X, F22.14)') x,  y
 	
 	
 !################FUNCIONAAAAAA HASTA ACA :D ####################
