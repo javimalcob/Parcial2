@@ -43,3 +43,23 @@ Archivo .dat
 14.0	-331.608
 15.0	-358.733
 16.0	-394.825
+
+#notas
++ Problema de encontrar el parametro inicial de una ecuacion diferencial
++ Metodo de Euler
++ dy/dt = f(t,y)
+  a < t < b
+  h = (b-a)/ n
+ y(t0) = alfa
+ ´´´fortran
+  t = a
+  w = alfa
+  !write(I2, 100) t, w
+  i = 1
+  do while (t <= b)
+    t = a + i*h
+    w = w + h * f(t,w)
+    write ('I2', 100) t, w
+    i = i + 1
+  end do
+ ´´´
