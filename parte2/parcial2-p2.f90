@@ -1,13 +1,14 @@
 program parte2
 use mod_prec
 use metodos
+use funciones
 implicit none
 
 
     !########################### ENTRADA DE DATOS################################
     !----------------------------------------------------------------------------
     !Seccion de Declaracion de variables
-    real(wp)                                       :: c, h, dfc
+    real(wp)                                       :: c, h, dfc, int, a , b
     real(wp), dimension(:), allocatable            :: t, z, v
     real(wp), dimension(:), allocatable            :: x, y ! vectores auxiliares
     integer(il)                                    :: fu, i, std, nlines, n
@@ -110,8 +111,27 @@ implicit none
             write(fu,*) t(i), z(i), v(i)
         end do
            write(*,*) "Procesamiento de datos exitoso lo datos se guardaron en >salida.dat< abrelo!  :D"
-    deallocate(t, z, v)
+    
     close(fu)
 
-
+     !########################### CALCULO DEL TRABAJO##############################
+    !--------------------------------------------------------------------------------
+    a = 0._wp
+    b = 16._wp
+    n = 100
+    
+    call simpson (a, b, n, Fv, int)
+    print*, "El trabajo es W =", int 
+    
+    
+      !########################### CALCULO DEL TRABAJO################################
+    !--------------------------------------------------------------------------------
+    
+     !subroutine lagrange(n, x, fx, c, pc)
+     
+     do i = 0 , 100
+        c = 0 + (16/100) * i
+        call lagrange(16, z, v, c , pc)
+     end do
+     deallocate(t, z, v)
 end program parte2

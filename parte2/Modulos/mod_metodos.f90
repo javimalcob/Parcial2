@@ -1,6 +1,6 @@
 module metodos
 use mod_prec
-!use funciones
+use funciones
 implicit none 
 
 contains
@@ -13,9 +13,9 @@ contains
 !------------------------------------------------------------------------------------------- 
     subroutine trapecionoeq (x, y, n, int)
     !Declaracion de variables
-    integer(il), intent(in)                 :: n
-    real(wp), dimension(0:n), intent(in)    :: x, y
-    real(wp), intent(out)                   :: int
+    integer(il), intent(in)                 :: n    !cantidad de datos
+    real(wp), dimension(0:n), intent(in)    :: x, y !vectores con datos (posicion y velocidad)
+    real(wp), intent(out)                   :: int  !integral que escupe la subrutina
     
     !Declaracion de variables aux
     real(wp)                                :: aux, h, xi
@@ -147,5 +147,35 @@ contains
 	    !dfc = (f(c)-f(c-h))/h
 	    
 	end subroutine derivada2atras
+	
+!############################################################################################
+!························METODOS DE INTERPOLACION POLINOMIAL··························
+!############################################################################################
+	subroutine lagrange(n, x, fx, c, pc)
+        integer(il), intent(in)                  ::  n  !grado del polinomio
+        real(wp), dimension(0:n), intent(in)     :: x  !vector de los xi
+        real(wp), dimension(0:n), intent(in)     :: fx !vector de los fxi
+        real(wp), intent(in)                     :: c   !punto a evaluar
+        real(wp), intent(out)                    :: pc  !polinomio evaluado c
+        
+        !variables auxiliares
+        real(wp)                    :: lci
+        integer(il)                 :: i, k
+        !-----------------------------------------------------
+        !Proceso
+        pc = 0.0_wp
+        !auxl = (c - x(i)) / (x(k)- x(i))
+        do k = 0, n
+            lci = 1.0_wp      
+            do i = 0, n
+                if (k /= i) then
+                    lci = lci * (c - x(i)) / (x(k)- x(i))                     
+                end if
+                
+            end do
+            pc = pc + lci * fx(k)
+        end do
+        
+    end subroutine lagrange
 
 end module metodos

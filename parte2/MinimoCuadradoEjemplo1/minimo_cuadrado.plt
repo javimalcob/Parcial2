@@ -26,7 +26,7 @@ set out 'pendiente.ps'
     #set label 1 at 100,700 mq_value
 
     # ACA SE GRAFICA LOS DATOS Y CREERIA QUE LA RECTA TMB 
-    #p 'columnapendulo.dat' ls 1 t 'pts ({m},{T²})', f(x) ls 2 t 'Recta de Ajuste'
+    #p 'datos .dat' ls 1 t 'pts ({m},{T²})', f(x) ls 2 t 'Recta de Ajuste'
     set out
 
 
