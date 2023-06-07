@@ -1,0 +1,118 @@
+module metodos
+use mod_prec
+!use funciones
+implicit none 
+
+contains
+!############################################################################################
+!························METODOS DE INTEGRACION NUMERICA MODIFICADOS·························
+!############################################################################################
+
+!###########################################################################################
+!----------------METODO DE TRAPECIO PARA PUNTOS NO EQUDISTANTES-----------------------------
+!------------------------------------------------------------------------------------------- 
+    subroutine trapecionoeq (x, y, n, int)
+    !Declaracion de variables
+    integer(il), intent(in)                 :: n
+    real(wp), dimension(0:n), intent(in)    :: x, y
+    real(wp), intent(out)                   :: int
+    
+    !Declaracion de variables aux
+    real(wp)                                :: aux, h, xi
+    integer(il)                             :: i
+    
+    !Incializacion de variables
+    int = 0.0_wp
+
+    !Bloque de procesamiento
+    
+        do i = 0 , n-1
+            h = x(i+1)-x(i)
+            aux = y(i) + y(i+1)/2
+            int = int + aux * h
+        end do 
+    
+        print *, '~~~~~~~~~~~~~~~~~~~~~~~~~~~'
+        !print *, 'la integral es', int
+        print *, '~~~~~~~~~~~~~~~~~~~~~~~~~~~'
+    
+    end subroutine trapecionoeq
+    
+
+
+
+!############################################################################################
+!························METODOS DE DERIVACION NUMERICA MODIFICADOS··························
+!############################################################################################
+
+
+!###########################################################################################
+!-------------------------FORMULA 3 PUNTOS CENTRADO-----------------------------------------
+!-------------------------------------------------------------------------------------------	
+	
+	subroutine derivada3centrada(x, h, y, n, dfc)
+	
+	!Declaracion de Dummy varaibles
+        integer(il), intent(in)              :: n
+		real(wp), intent(in), dimension(0:n) :: x, y 
+        real(wp), intent(in)                 :: h
+        real(wp), intent(out)                :: dfc
+        
+        dfc = (1._wp/(2_wp*h)) * (y(n) - y(0))    
+	    !dfc = 1._wp/2_wp*h * (f(c + h) - f(c - h))
+	
+	end subroutine derivada3centrada
+
+!############################################################################################
+!-------------------------FORMULA 5 PUNTOS CENTRADO-----------------------------------------
+!-------------------------------------------------------------------------------------------	
+	
+	subroutine derivada5centrada(x, h, y, n, dfc)
+
+    !Declaracion de Dummy variables
+        integer(il), intent(in)              :: n
+        real(wp), intent(in), dimension(0:n) :: x, y
+        real(wp), intent(in)                 :: h
+        real(wp), intent(out)                :: dfc
+	    
+	    !Declaracion de variables auxiliares
+        dfc = (1._wp/(12._wp*h))*(y(0) - 8._wp*y(n-3) + 8._wp*y(n-1) - y(n))
+
+	   ! dfc = (1._wp/(12._wp*h))*(f(c - 2._wp*h) - 8._wp*f(c-h) + 8._wp*f(c + h) - f(c + 2._wp*h))  
+	   !dfc = 1._wp/(12._wp*h)*(f(c - 2._wp*h) - 8._wp*(c-h) + 8._wp*(c + h) - f(c + 2._wp*h))	
+	    
+	end subroutine derivada5centrada
+
+!##############################################################################################
+!-------------------------FORMULA 2 PUNTOS HACIA ADELANTE-------------------------------------
+!---------------------------------------------------------------------------------------------
+
+	subroutine derivada2adelante(x, h, y, n, dfc)
+	!Declaracion de Dummy variables
+        integer(il), intent(in)              :: n
+        real(wp), intent(in), dimension(0:n) :: x, y
+        real(wp), intent(in)                 :: h
+        real(wp), intent(out)                :: dfc
+        
+        dfc = (y(n) - y(0)) / h
+        !dfc = (f(c+h)-f(c))/h
+	    
+	end subroutine derivada2adelante
+
+!##############################################################################################
+!-------------------------FORMULA 2 PUNTOS HACIA ATRAS-----------------------------------------
+!----------------------------------------------------------------------------------------------
+
+	subroutine derivada2atras (x, h, y, n, dfc)
+	!Declaracion de Dummy variables
+        integer(il), intent(in)              :: n
+        real(wp), intent(in), dimension(0:n) :: x, y
+        real(wp), intent(in)                 :: h
+        real(wp), intent(out)                :: dfc
+
+	    dfc = (y(n) - y(0)) / h
+	    !dfc = (f(c)-f(c-h))/h
+	    
+	end subroutine derivada2atras
+
+end module metodos

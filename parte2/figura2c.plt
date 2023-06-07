@@ -1,20 +1,20 @@
 set term x11 persist
 
-# parcial 1 - ejercicio 2
+# parcial 2 - ejercicio 2
 
 # MERCADO, Javier
 # SOLLENDER, Jazmín
 
-# parte II.A
+# parte II.C
 # Gráfico de comparación entre métodos.
 
 ##################################################
 ####            h o l i s    ( :            ######
 ##################################################
 
-    set title  "Funcion posicion z(t) vs t "
+    set title  "Funcion velocidad v(t) vs t "
     set xlabel "Tiempo"
-    set ylabel "Posición"
+    set ylabel "Velocidad"
     set grid
     #set logscale xy
     #set sample 500
@@ -25,7 +25,7 @@ set term x11 persist
     
     # grafico error relativo biseccion    
     
-          plot "datos.dat" u 1:2 title "Datos z vs t" w lp pointtype 7  
+          plot "salida.dat" u 1:3 title "Datos v vs t" w lp pointtype 7  
     
       
 ##################################################
@@ -34,7 +34,7 @@ set term x11 persist
 ############       P   N   G         #############
 
     set terminal png size 1200,900
-    set output './Graficos/figura2a.png'
+    set output './Graficos/figura2c.png'
     replot
 
 exit

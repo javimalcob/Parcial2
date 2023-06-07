@@ -62,7 +62,7 @@ contains
         real(wp)            	:: f
         real(wp), intent(out)   :: dfc 	
 	    
-	    dfc = (f(c-h)-f(c))/h
+	    dfc = (f(c)-f(c-h))/h
 	    
 	end subroutine derivada2atras
 
