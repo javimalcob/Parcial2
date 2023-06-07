@@ -66,7 +66,7 @@ contains
       	
       	impar: do i = 1 , (n/2), 1
       	    x_impar = a + 2._wp*i*h
-      		int = int + (2._wp/3)*f(x_par) + (4._wp/3)*f(x_impar)
+      		int = int + (4._wp/3)*f(x_impar)
       	end do impar
       	
       	int = int * h
