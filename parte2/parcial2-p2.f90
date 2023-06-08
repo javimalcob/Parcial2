@@ -8,7 +8,7 @@ implicit none
     !########################### ENTRADA DE DATOS################################
     !----------------------------------------------------------------------------
     !Seccion de Declaracion de variables
-    real(wp)                                       :: c, h, dfc, int, a , b, m , alfa, g
+    real(wp)                                       :: c, h, dfc, int, a , b, m , alfa, g, work, pc
     real(wp), dimension(:), allocatable            :: t, z, v
     real(wp), dimension(:), allocatable            :: x, y , fz ! vectores auxiliares
     integer(il)                                    :: fu, i, std, nlines, n
@@ -150,11 +150,27 @@ implicit none
 
     deallocate (fz)
 
+
+
+    !#################### TRABAJO USANDO EL TEOREMA DE TRABAJO ENERGIA#########################
+    !--------------------------------------------------------------------------------
+     work = -1._wp * (1._wp/2._wp) * m *( (v(nlines-1))**2 - (v(0))**2 )
+     print*, 'Trabajo con consideracion energeticas es =', work
+
+    
+    !#################### INTERPOLACION DE LA POSICION z(t) vs t USANDO LAGRANGE###############
+    !--------------------------------------------------------------------------------
+
      !subroutine lagrange(n, x, fx, c, pc)
-     
-     !do i = 0 , 100
-     !   c = 0 + (16/100) * i
-     !   call lagrange(16, z, v, c , pc)
-     !end do
+     archivo_out = 'pol_lagrange.dat'
+     c = 0.0_wp    
+     n = 100
+     open(newunit=fu, file=archivo_out)
+         write(fu,*) "   tiempo   ",  "    Posicion  "
+         do i = 0 , n
+            c = t(0) + float(i) * ((t(nlines-1) - t(0))/float(n))
+            call lagrange(nlines-1, t, z, c , pc)
+            write(fu,*) c, pc
+         end do
      deallocate(t, z, v)
 end program parte2

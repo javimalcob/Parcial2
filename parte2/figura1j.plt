@@ -12,35 +12,31 @@ set term x11 persist
 ####            h o l i s    ( :            ######
 ##################################################
 
-    set title  "Funcion posicion(t) (ajust.)"
-    set xlabel "tiempo"
-    set ylabel "posicion"
+    set title  "Polinomio Lagrange z(t) vs t "
+    set xlabel "Tiempo"
+    set ylabel "Polinomio Lagrange z"
     set grid
     #set logscale xy
-    set sample 500
-
+    #set sample 500
+ 
     # Posicion respecto del tiempo(x) obtenida mediante el ajuste
-    z(x) = -9.67978*3.14392*x + 9.67978*3.14392**2*(1-exp(-x/3.14392))      
-    
-    #Velocidad respecto del tiempo(x) obtenida por derivar la z(x)
-    #v(x) = 9.68*3.14*(exp(-x/3.14)-1)
-    
+    z(x) = -9.67978*3.14392*x + 9.67978*3.14392**2*(1-exp(-x/3.14392))
 ##################################################
 ######      G R A F.   D A T O S            ######
 ##################################################
-
+    
     # grafico error relativo biseccion    
-
-    plot "salida.dat" u 1:2 title "Datos z vs t" w p pointtype 7
-    replot z(x)
-
+    
+          plot "pol_lagrange.dat" u 1:2 title "Polinomio lagrange z vs t" w lp pointtype 7  
+          replot "datos.dat" u 1:2 title "puntos medidos z vs t" w lp pointtype 7
+          replot z(x)
 ##################################################
 ######          E X P O R T A R             ######
 ##################################################
 ############       P   N   G         #############
 
     set terminal png size 1200,900
-    set output './Graficos/figura1d.png'
+    set output './Graficos/figura1j.png'
     replot
 
 exit
