@@ -10,7 +10,7 @@ implicit none
     !Seccion de Declaracion de variables
     real(wp)                                       :: c, h, dfc, int, a , b
     real(wp), dimension(:), allocatable            :: t, z, v
-    real(wp), dimension(:), allocatable            :: x, y ! vectores auxiliares
+    real(wp), dimension(:), allocatable            :: x, y , fz ! vectores auxiliares
     integer(il)                                    :: fu, i, std, nlines, n
     character(80)                                  :: archivo_out , archivo_in, line
     !----------------------------------------------------------------------------
@@ -114,24 +114,51 @@ implicit none
     
     close(fu)
 
-     !########################### CALCULO DEL TRABAJO##############################
+     !########################### CALCULO DEL TRABAJO        ##############################
     !--------------------------------------------------------------------------------
-    a = 0._wp
-    b = 16._wp
-    n = 100
+    !Realizamos la integral de la funcion F.vdt  entre t=0.0s y t = 16.0s
+    print*, nlines
+    print*, t
+    print*, z
+    print*, v
+    a = t(0) !extremo izquierdo de integracion
+    b = t(nlines-1)
+    n = 100 !Numero par de division de subintervalos
     
     call simpson (a, b, n, Fv, int)
     print*, "El trabajo es W =", int 
     
     
-      !########################### CALCULO DEL TRABAJO################################
+    !########################### CALCULO ALTERNATIVO DEL TRABAJO################################
     !--------------------------------------------------------------------------------
+    !subroutine trapecionoeq (x, y, n, int)
     
+    !DATOS OBTENIDOS DEL AJUSTE DE MINIMOS CUADRADOS
+    alfa = 3.14392_wp
+    m = 0.001_wp
+    g = 9.67978_wp
+    c = m/alfa
+    allocate (fz(0: nlines-1))
+    do i = 0 , nlines-1
+        fz(i) = -
+
+    end do
+
+    call trapecionoeq()
+    
+
+
+
+
+
+
+    deallocate (fz)
+
      !subroutine lagrange(n, x, fx, c, pc)
      
-     do i = 0 , 100
-        c = 0 + (16/100) * i
-        call lagrange(16, z, v, c , pc)
-     end do
+     !do i = 0 , 100
+     !   c = 0 + (16/100) * i
+     !   call lagrange(16, z, v, c , pc)
+     !end do
      deallocate(t, z, v)
 end program parte2
