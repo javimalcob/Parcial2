@@ -11,7 +11,7 @@ implicit none
     
     a = 0._wp
     b = 4._wp
-    n = 1000000    
+    n = 4   
 
     call simpson (a, b, n, cuad, int)
        

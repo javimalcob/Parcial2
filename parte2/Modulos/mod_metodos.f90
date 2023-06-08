@@ -60,12 +60,14 @@ contains
       	int = (f(a) + f(b))/3._wp
       	
       	par: do i = 1 , (n/2)-1, 1
-      	    x_par = a + 2._wp*i*h + h
+            x_par = a + 2._wp*i*h
+      	    !x_par = a + 2._wp*i*h + h
       		int = int + (2._wp/3)*f(x_par)
       	end do par
       	
       	impar: do i = 1 , (n/2), 1
-      	    x_impar = a + 2._wp*i*h
+            x_impar = a +  (2._wp*i - 1) * h
+      	    !x_impar = a + 2._wp*i*h
       		int = int + (4._wp/3)*f(x_impar)
       	end do impar
       	
