@@ -8,7 +8,7 @@ implicit none
     !########################### ENTRADA DE DATOS################################
     !----------------------------------------------------------------------------
     !Seccion de Declaracion de variables
-    real(wp)                                       :: c, h, dfc, int, a , b
+    real(wp)                                       :: c, h, dfc, int, a , b, m , alfa, g
     real(wp), dimension(:), allocatable            :: t, z, v
     real(wp), dimension(:), allocatable            :: x, y , fz ! vectores auxiliares
     integer(il)                                    :: fu, i, std, nlines, n
@@ -140,12 +140,11 @@ implicit none
     c = m/alfa
     allocate (fz(0: nlines-1))
     do i = 0 , nlines-1
-        fz(i) = -
-
+        fz(i) = -m * g - c * v(i) 
     end do
-
-    call trapecionoeq()
-    
+    print*, fz
+    call trapecionoeq(z, fz, nlines , int )
+    print *, 'Trabajo W fz' ,int
 
 
 
