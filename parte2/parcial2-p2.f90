@@ -140,16 +140,13 @@ implicit none
     c = m/alfa
     allocate (fz(0: nlines-1))
     do i = 0 , nlines-1
-        fz(i) = -m * g - c * v(i) 
+        fz(i) = - m * g - c * v(i) 
     end do
-    print*, fz
+    print*, 'Fz', fz
     call trapecionoeq(z, fz, nlines , int )
+    !call trapecionoeq(z, v, nlines , int )
+    !int = - c *int - m * g * (z(nlines-1) - z(0))
     print *, 'Trabajo W fz' ,int
-
-
-
-
-
 
     deallocate (fz)
 
